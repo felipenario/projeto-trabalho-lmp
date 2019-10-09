@@ -6,6 +6,7 @@
 package emp.controller;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,36 +16,27 @@ public class Vendas {
     
     private int numero;
     private Date data;
+    private ArrayList<Vendas_Itens> vendasItens;
     
     private int pk_venda;
     private int fk_cliente;
     private int fk_vendedor;
+
+    public Vendas(int numero, Date data, ArrayList<Vendas_Itens> vendasItens, int pk_venda, int fk_cliente, int fk_vendedor) {
+        this.numero = numero;
+        this.data = data;
+        this.vendasItens = vendasItens;
+        this.pk_venda = pk_venda;
+        this.fk_cliente = fk_cliente;
+        this.fk_vendedor = fk_vendedor;
+    }
 
     public Vendas(int numero, Date data) {
         this.numero = numero;
         this.data = data;
     }
 
-    public Vendas(int numero, Date data, int pk_venda) {
-        this.numero = numero;
-        this.data = data;
-        this.pk_venda = pk_venda;
-    }
-
-    public Vendas(int numero, Date data, int pk_venda, int fk_cliente) {
-        this.numero = numero;
-        this.data = data;
-        this.pk_venda = pk_venda;
-        this.fk_cliente = fk_cliente;
-    }
-
-    public Vendas(int numero, Date data, int pk_venda, int fk_cliente, int fk_vendedor) {
-        this.numero = numero;
-        this.data = data;
-        this.pk_venda = pk_venda;
-        this.fk_cliente = fk_cliente;
-        this.fk_vendedor = fk_vendedor;
-    }
+   
 
     public int getNumero() {
         return numero;
@@ -86,11 +78,18 @@ public class Vendas {
         this.fk_vendedor = fk_vendedor;
     }
 
+    public ArrayList<Vendas_Itens> getVendasItens() {
+        return vendasItens;
+    }
+
+    public void setVendasItens(ArrayList<Vendas_Itens> vendasItens) {
+        this.vendasItens = vendasItens;
+    }
+
     @Override
     public String toString() {
-        return "Vendas{" + "numero=" + numero + ", data=" + data + ", pk_venda=" + pk_venda + ", fk_cliente=" + fk_cliente + ", fk_vendedor=" + fk_vendedor + '}';
+        return "Vendas{" + "numero=" + numero + ", data=" + data + ", vendasItens=" + vendasItens + ", pk_venda=" + pk_venda + ", fk_cliente=" + fk_cliente + ", fk_vendedor=" + fk_vendedor + '}';
     }
-    
     
     
 }

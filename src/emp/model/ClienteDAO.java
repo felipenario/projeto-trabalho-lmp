@@ -24,11 +24,10 @@ public class ClienteDAO {
         
         PreparedStatement stm = 
                 conn.prepareStatement(
-                "INSERT INTO cliente(nome, nascimento, cpf) VALUES (?, ?, ?)",
+                "INSERT INTO cliente(nome, cpf) VALUES (?, ?)",
                  PreparedStatement.RETURN_GENERATED_KEYS);
               
         stm.setString(1, c.getNome());
-        stm.setDate(2, c.getNascimento());
         stm.setString(3, c.getCpf());
         
         
@@ -75,8 +74,7 @@ public class ClienteDAO {
         if (rs.next()){
             c = new Cliente(
                     rs.getInt("pk_cliente"), 
-                    rs.getString("nome"), 
-                    rs.getDate("nascimento"), 
+                    rs.getString("nome"),  
                     rs.getString("cpf"));
             
             c.setTelefones(TelefoneDAO.retreaveall(c.getPk_cliente()));
@@ -101,7 +99,7 @@ public class ClienteDAO {
         ArrayList<Cliente> clientes = new ArrayList<>();
         
         while(rs.next()){
-            clientes.add(new Cliente(pk_cliente, rs.getString("nome"), rs.getDate("nascimento"), rs.getString("cpf")) );
+            clientes.add(new Cliente(pk_cliente, rs.getString("nome"), rs.getString("cpf")) );
         }
 
        return clientes;
@@ -130,7 +128,6 @@ public class ClienteDAO {
                 "UPDATE CLIENTE SET NOME = ?, NASCIMENTO = ?, CPF = ? WHERE PK_CLIENTE = ?");
         
         stm.setString(1, c.getNome());
-        stm.setDate(2, c.getNascimento());
         stm.setString(3, c.getCpf());
         stm.setInt(4, c.getPk_cliente());
         

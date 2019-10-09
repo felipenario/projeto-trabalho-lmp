@@ -11,6 +11,7 @@ public class Cliente {
     private int pk_cliente;
     private String nome;
     private Cpf cpf;
+    private cliente
 
 
     public Cliente(int pk_cliente, String nome, String cpf) {

@@ -83,6 +83,7 @@ public class Vendas_Itens {
     public void setFk_produto(int fk_produto) {
         this.fk_produto = fk_produto;
     }
+    
 
     @Override
     public String toString() {
