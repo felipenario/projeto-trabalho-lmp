@@ -10,6 +10,7 @@ package emp.controller;
  * @author L
  */
 public class Endereco {
+
     private String logradouro;
     private String numero;
     private String complemento;
@@ -17,7 +18,7 @@ public class Endereco {
     private String cidade;
     private String estado;
     private String cep;
-    
+
     private int pk_endereco;
     private int fk_cliente;
 
@@ -56,8 +57,6 @@ public class Endereco {
         this.pk_endereco = pk_endereco;
         this.fk_cliente = fk_cliente;
     }
-    
-    
 
     public String getLogradouro() {
         return logradouro;
@@ -119,8 +118,8 @@ public class Endereco {
     public String toString() {
         return "Endereco{" + "logradouro=" + logradouro + ", numero=" + numero + ", complemento=" + complemento + ", bairro=" + bairro + ", cidade=" + cidade + ", estado=" + estado + ", cep=" + cep + '}';
     }
-    
-    public void print(){       
+
+    public void print() {
         System.out.println(this);
     }
 
@@ -139,7 +138,5 @@ public class Endereco {
     public void setFk_cliente(int fk_cliente) {
         this.fk_cliente = fk_cliente;
     }
-    
-    
-        
+
 }

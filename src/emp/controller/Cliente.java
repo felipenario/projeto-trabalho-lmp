@@ -8,11 +8,11 @@ import java.util.ArrayList;
  * @author L
  */
 public class Cliente {
+
     private int pk_cliente;
     private String nome;
     private Cpf cpf;
     private Clientes_Enderecos endereco;
-
 
     public Cliente(int pk_cliente, String nome, String cpf) {
         this.pk_cliente = pk_cliente;
@@ -26,8 +26,6 @@ public class Cliente {
         this.cpf = new Cpf(cpf);
         this.endereco = endereco;
     }
-    
-    
 
     public String getNome() {
         return nome;
@@ -57,25 +55,22 @@ public class Cliente {
     public String toString() {
         return "Cliente{" + "pk_cliente=" + pk_cliente + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + '}';
     }
-      
-    
-    
-    public void print(){
+
+    public void print() {
         System.out.println(this);
-        
+
         this.cpf.print();
     }
 
     public int setPk_cliente() {
         return pk_cliente;
-        
+
     }
-    
-    
+
     public void setPk_cliente(int pk_cliente) {
         this.pk_cliente = pk_cliente;
     }
-    
+
     public int getPk_cliente() {
         return pk_cliente;
     }

@@ -13,11 +13,11 @@ import java.util.ArrayList;
  * @author Felipe Nário
  */
 public class Compras {
-    
+
     private int numero;
     private Date datas;
     private ArrayList<Compras_Itens> comprasitens;
-            
+
     private int pk_compra;
     private int fk_fornecedor;
 
@@ -35,8 +35,6 @@ public class Compras {
         this.pk_compra = pk_compra;
         this.fk_fornecedor = fk_fornecedor;
     }
-
-    
 
     public int getNumero() {
         return numero;
@@ -82,6 +80,5 @@ public class Compras {
     public String toString() {
         return "Compras{" + "numero=" + numero + ", datas=" + datas + ", comprasitens=" + comprasitens + ", pk_compra=" + pk_compra + ", fk_fornecedor=" + fk_fornecedor + '}';
     }
-    
-    
+
 }

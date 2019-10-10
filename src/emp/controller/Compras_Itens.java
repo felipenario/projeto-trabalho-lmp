@@ -10,10 +10,10 @@ package emp.controller;
  * @author Felipe Nário
  */
 public class Compras_Itens {
-    
+
     private int qtd;
     private double valor_unitario;
-    
+
     private int pk_item;
     private int fk_compra;
     private int fk_produto;
@@ -83,7 +83,5 @@ public class Compras_Itens {
     public String toString() {
         return "Compras_Itens{" + "qtd=" + qtd + ", valor_unitario=" + valor_unitario + ", pk_item=" + pk_item + ", fk_compra=" + fk_compra + ", fk_produto=" + fk_produto + '}';
     }
-    
-    
-    
+
 }

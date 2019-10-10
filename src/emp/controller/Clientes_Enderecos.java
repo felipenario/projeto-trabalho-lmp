@@ -10,14 +10,14 @@ package emp.controller;
  * @author Felipe Nário
  */
 public class Clientes_Enderecos {
-    
+
     private String logradouro;
     private String bairro;
     private String cidade;
     private String estado;
     private String pais;
     private String cep;
-    
+
     private int pk_endereco;
     private int fk_cliente;
 
@@ -118,7 +118,5 @@ public class Clientes_Enderecos {
     public String toString() {
         return "Clientes_Enderecos{" + "logradouro=" + logradouro + ", bairro=" + bairro + ", cidade=" + cidade + ", estado=" + estado + ", pais=" + pais + ", cep=" + cep + ", pk_endereco=" + pk_endereco + ", fk_cliente=" + fk_cliente + '}';
     }
-    
-    
-    
+
 }

@@ -10,10 +10,10 @@ package emp.controller;
  * @author Felipe Nário
  */
 public class Fornecedor {
-    
+
     private String nome;
     private Cpf cpf;
-    
+
     private int pk_fornecedor;
 
     public Fornecedor(String nome, String cpf) {
@@ -36,7 +36,7 @@ public class Fornecedor {
     }
 
     public String getCpf() {
-       return this.cpf.getNum();
+        return this.cpf.getNum();
     }
 
     public void setCpf(String numero) {
@@ -55,7 +55,5 @@ public class Fornecedor {
     public String toString() {
         return "Fornecedor{" + "nome=" + nome + ", cpf=" + cpf + ", pk_fornecedor=" + pk_fornecedor + '}';
     }
-    
-    
-    
+
 }

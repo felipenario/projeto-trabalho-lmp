@@ -10,11 +10,11 @@ package emp.controller;
  * @author Felipe Nário
  */
 public class Funcionarios {
-    
+
     private String nome;
     private Cpf cpf;
     private Funcionarios_Enderecos endereco;
-    
+
     private int pk_funcionario;
     private int fk_cargo;
 
@@ -82,8 +82,5 @@ public class Funcionarios {
     public String toString() {
         return "Funcionarios{" + "nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + ", pk_funcionario=" + pk_funcionario + ", fk_cargo=" + fk_cargo + '}';
     }
-    
 
-   
-    
 }

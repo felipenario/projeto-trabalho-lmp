@@ -10,7 +10,7 @@ package emp.controller;
  * @author Felipe Nário
  */
 public class Cargo {
-    
+
     private int pk_cargo;
     private String nome;
     private String descricao;
@@ -54,7 +54,5 @@ public class Cargo {
     public String toString() {
         return "Cargo{" + "pk_cargo=" + pk_cargo + ", nome=" + nome + ", descricao=" + descricao + '}';
     }
-    
-    
-    
+
 }

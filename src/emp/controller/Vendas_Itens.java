@@ -10,10 +10,10 @@ package emp.controller;
  * @author Felipe Nário
  */
 public class Vendas_Itens {
-    
+
     private int qtd;
     private double valor_unitario;
-    
+
     private int pk_item;
     private int fk_venda;
     private int fk_produto;
@@ -83,13 +83,10 @@ public class Vendas_Itens {
     public void setFk_produto(int fk_produto) {
         this.fk_produto = fk_produto;
     }
-    
 
     @Override
     public String toString() {
         return "Vendas_Itens{" + "qtd=" + qtd + ", valor_unitario=" + valor_unitario + ", pk_item=" + pk_item + ", fk_venda=" + fk_venda + ", fk_produto=" + fk_produto + '}';
     }
-    
-    
-    
+
 }

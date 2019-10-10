@@ -22,29 +22,25 @@ public class Cpf {
     public String getNum() {
         return num;
     }
+
     /**
-     * atribui a variavel de instancia o valor
-     * passado por parametro. 
-     * 
-     * Um erro e lancado caso o cpf nao seja 
-     * valido
-     * 
-     * O metodo e final para evitar que uma
-     * subclasse o sobrescreva 'burlando' a 
+     * atribui a variavel de instancia o valor passado por parametro.
+     *
+     * Um erro e lancado caso o cpf nao seja valido
+     *
+     * O metodo e final para evitar que uma subclasse o sobrescreva 'burlando' a
      * validacao.
+     *
      * @param num o cpf
      */
     public final void setNum(String num) {
-        if (this.validaCpf(num)){
-           this.num = num;
+        if (this.validaCpf(num)) {
+            this.num = num;
         } else {
-            throw 
-            new RuntimeException("CPF Inválido");
+            throw new RuntimeException("CPF Inválido");
         }
     }
-    
-    
-    
+
     private boolean validaCpf(String numero) {
 
         // considera-se erro numero's formados por uma sequencia de numeros iguais
@@ -112,8 +108,8 @@ public class Cpf {
     public String toString() {
         return "Cpf{" + "numero=" + num + '}';
     }
-    
-    public void print(){
+
+    public void print() {
         System.out.println(this);
     }
 }

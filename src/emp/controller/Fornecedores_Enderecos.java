@@ -10,14 +10,14 @@ package emp.controller;
  * @author Felipe Nário
  */
 public class Fornecedores_Enderecos {
-    
+
     private String logradouro;
     private String bairro;
     private String cidade;
     private String estado;
     private String pais;
     private String cep;
-    
+
     private int pk_endereco;
     private int fk_fornecedor;
 
@@ -119,8 +119,5 @@ public class Fornecedores_Enderecos {
     public String toString() {
         return "Fornecedores_Enderecos{" + "logradouro=" + logradouro + ", bairro=" + bairro + ", cidade=" + cidade + ", estado=" + estado + ", pais=" + pais + ", cep=" + cep + ", pk_endereco=" + pk_endereco + ", fk_fornecedor=" + fk_fornecedor + '}';
     }
-    
-    
-    
-    
+
 }

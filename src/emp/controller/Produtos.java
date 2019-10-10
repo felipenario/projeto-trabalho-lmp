@@ -10,11 +10,11 @@ package emp.controller;
  * @author Felipe Nário
  */
 public class Produtos {
-    
+
     private String nome;
     private int estoque_minimo;
     private int qtd_estoque;
-    
+
     private int pk_produto;
 
     public Produtos(String nome, int estoque_minimo, int qtd_estoque) {
@@ -66,7 +66,5 @@ public class Produtos {
     public String toString() {
         return "Produtos{" + "nome=" + nome + ", estoque_minimo=" + estoque_minimo + ", qtd_estoque=" + qtd_estoque + ", pk_produto=" + pk_produto + '}';
     }
-    
-    
-    
+
 }

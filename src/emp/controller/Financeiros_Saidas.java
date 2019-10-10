@@ -12,13 +12,13 @@ import java.sql.Date;
  * @author Felipe Nário
  */
 public class Financeiros_Saidas {
-    
+
     private Date data_emissao;
     private Date data_vencimento;
     private Date data_baixa;
     private double valor;
     private String tipo_documento;
-    
+
     private int pk_financeiro;
     private int fk_compra;
 
@@ -109,7 +109,5 @@ public class Financeiros_Saidas {
     public String toString() {
         return "Financeiros_Saidas{" + "data_emissao=" + data_emissao + ", data_vencimento=" + data_vencimento + ", data_baixa=" + data_baixa + ", valor=" + valor + ", tipo_documento=" + tipo_documento + ", pk_financeiro=" + pk_financeiro + ", fk_compra=" + fk_compra + '}';
     }
-    
-    
-    
+
 }

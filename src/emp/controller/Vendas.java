@@ -13,11 +13,11 @@ import java.util.ArrayList;
  * @author Felipe Nário
  */
 public class Vendas {
-    
+
     private int numero;
     private Date data;
     private ArrayList<Vendas_Itens> vendasItens;
-    
+
     private int pk_venda;
     private int fk_cliente;
     private int fk_vendedor;
@@ -43,9 +43,6 @@ public class Vendas {
         this.fk_cliente = fk_cliente;
         this.fk_vendedor = fk_vendedor;
     }
-    
-    
-   
 
     public int getNumero() {
         return numero;
@@ -99,6 +96,5 @@ public class Vendas {
     public String toString() {
         return "Vendas{" + "numero=" + numero + ", data=" + data + ", vendasItens=" + vendasItens + ", pk_venda=" + pk_venda + ", fk_cliente=" + fk_cliente + ", fk_vendedor=" + fk_vendedor + '}';
     }
-    
-    
+
 }

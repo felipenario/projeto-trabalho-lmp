@@ -10,6 +10,7 @@ package emp.controller;
  * @author L
  */
 public class Telefone {
+
     private int ddd;
     private String numero;
 
@@ -36,8 +37,6 @@ public class Telefone {
 
     public Telefone() {
     }
-    
-    
 
     public int getDdd() {
         return ddd;
@@ -76,8 +75,8 @@ public class Telefone {
         return "Telefone{" + "ddd=" + ddd + ", numero=" + numero + ", pk_telefone=" + pk_telefone + ", fk=" + fk + '}';
     }
 
-    public void print(){
+    public void print() {
         System.out.println(this);
     }
-    
+
 }
