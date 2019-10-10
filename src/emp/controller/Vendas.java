@@ -36,6 +36,15 @@ public class Vendas {
         this.data = data;
     }
 
+    public Vendas(int numero, Date data, int pk_venda, int fk_cliente, int fk_vendedor) {
+        this.numero = numero;
+        this.data = data;
+        this.pk_venda = pk_venda;
+        this.fk_cliente = fk_cliente;
+        this.fk_vendedor = fk_vendedor;
+    }
+    
+    
    
 
     public int getNumero() {

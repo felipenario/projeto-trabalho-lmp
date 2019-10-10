@@ -73,7 +73,9 @@ public class VendaDAO {
             v = new Vendas(
                     rs.getInt("numero"),
                     rs.getDate("data"),
-                    rs.getInt("pk_venda"));
+                    rs.getInt("pk_venda"),
+                    rs.getInt("fk_cliente"),
+                    rs.getInt("fk_vendedor"));
             
             v.setVendasItens(VendasItensDAO.retreaveall(v.getPk_venda()));
             
@@ -91,42 +93,49 @@ public class VendaDAO {
         Connection conn = DBConnection.getConnection();
         
         ResultSet rs = conn.createStatement().
-                executeQuery("SELECT * FROM VENDA WHERE PK_VENDA ="+pk_Vendas);
+                executeQuery("SELECT * FROM VENDAS WHERE PK_VENDA ="+pk_Vendas);
         
-        ArrayList<Venda> vendas = new ArrayList<>();
+        ArrayList<Vendas> vendas = new ArrayList<>();
         
         while(rs.next()){
-            vendas.add(new Venda(pk_Vendas, rs.getInt("numero"), rs.getDate("date")) );
+            vendas.add(new Vendas(rs.getInt("numero"),
+                    rs.getDate("data"),
+                    rs.getInt("pk_venda"),
+                    rs.getInt("fk_cliente"),
+                    rs.getInt("fk_vendedor")) );
         }
 
        return vendas;
     }
     
-    public static void delete(Venda b) throws SQLException{
+    public static void delete(Vendas v) throws SQLException{
         
          Connection conn = DBConnection.getConnection();
-         if(b.getPk_Venda() != 0){
-             conn.createStatement().execute("DELETE FROM VENDAS WHERE PK_VENDA =" + b.getPk_Venda());
+         if(v.getPk_venda() != 0){
+             conn.createStatement().execute("DELETE FROM VENDAS WHERE PK_VENDA =" + v.getPk_venda());
              
              
          }else {
-            throw new RuntimeException("Cliente não existe");
+            throw new RuntimeException("Venda não existe");
          }
         
         
     }
     
-        public static void update (Venda b) throws SQLException{
+        public static void update (Vendas v) throws SQLException{
         
         Connection conn = DBConnection.getConnection();
         
         PreparedStatement stm = 
                 conn.prepareStatement(
-                "UPDATE VENDAS SET NUMERO = ?, DATA = ? WHERE PK_VENDA = ?");
+                "UPDATE VENDAS SET NUMERO = ?, DATA = ?, FK_CLIENTE = ?, FK_VENDEDOR = ? WHERE PK_VENDA = ?");
         
-        stm.setInt(1, b.getNumero());
-        stm.setDate(2, b.getData());
-        stm.setInt(3, b.getPk_Venda());
+       
+        stm.setInt(1, v.getNumero());
+        stm.setDate(2, v.getData());
+        stm.setInt(3, v.getFk_cliente());
+        stm.setInt(4, v.getFk_vendedor());
+        stm.setInt(5, v.getPk_venda());
         
         stm.execute();
         

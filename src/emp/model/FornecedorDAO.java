@@ -17,7 +17,7 @@ import java.util.ArrayList;
  * @author joaom
  */
 public class FornecedorDAO {
-    public static int create(Fornecedor d) throws SQLException{
+    public static int create(Fornecedor f) throws SQLException{
         Connection conn = DBConnection.getConnection();
         
         PreparedStatement stm = 
@@ -25,8 +25,8 @@ public class FornecedorDAO {
                 "INSERT INTO fornecedores(nome, cpf) VALUES (?, ?)",
                  PreparedStatement.RETURN_GENERATED_KEYS);
               
-        stm.setString(1, d.getNome());
-        stm.setString(2, d.getCpf());
+        stm.setString(1, f.getNome());
+        stm.setString(2, f.getCpf());
         
         
         stm.execute();
@@ -36,9 +36,7 @@ public class FornecedorDAO {
         
         int pk = pkset.getInt(1);
         
-      
-        
-        Fornecedor_EnderecoDAO.create(d.getEndereco());
+        f.setPk_fornecedor(pkset.getInt(1));
     
         return pkset.getInt(1);
     }
@@ -58,19 +56,20 @@ public class FornecedorDAO {
         ResultSet rs = stm.getResultSet();
         
         
-        Fornecedor d;
+        Fornecedor f;
         
         if (rs.next()){
-            d = new Fornecedor(
-                    rs.getInt("pk_fornecedor"), 
+            f = new Fornecedor(
+                    
                     rs.getString("nome"), 
-                    rs.getString("cpf"));
+                    rs.getString("cpf"),
+                    rs.getInt("pk_fornecedor"));
            
-            return d;
+            return f;
 
                         
         } else{
-            throw new RuntimeException("Cliente não existe");                  
+            throw new RuntimeException("Fornecedor não existe");                  
         }
       
     }
@@ -84,27 +83,29 @@ public class FornecedorDAO {
         ArrayList<Fornecedor> fornecedores = new ArrayList<>();
         
         while(rs.next()){
-            fornecedores.add(new Fornecedor(pk_Fornecedor, rs.getString("nome"), rs.getString("cpf")) );
+            fornecedores.add(new Fornecedor(rs.getString("nome"), 
+                    rs.getString("cpf"),
+                    rs.getInt("pk_fornecedor")) );
         }
 
        return fornecedores;
     }
     
-    public static void delete(Fornecedor d) throws SQLException{
+    public static void delete(Fornecedor f) throws SQLException{
         
          Connection conn = DBConnection.getConnection();
-         if(d.getPk_Fornecedor() != 0){
-             conn.createStatement().execute("DELETE FROM FORNECEDORES WHERE PK_FORNECEDOR =" + d.getPk_Fornecedor());
+         if(f.getPk_fornecedor() != 0){
+             conn.createStatement().execute("DELETE FROM FORNECEDORES WHERE PK_FORNECEDOR =" + f.getPk_fornecedor());
              
              
          }else {
-            throw new RuntimeException("Cliente não existe");
+            throw new RuntimeException("Fornecedor não existe");
          }
         
         
     }
     
-        public static void update (Fornecedor d) throws SQLException{
+        public static void update (Fornecedor f) throws SQLException{
         
         Connection conn = DBConnection.getConnection();
         
@@ -112,9 +113,9 @@ public class FornecedorDAO {
                 conn.prepareStatement(
                 "UPDATE FORNECEDORES SET NOME = ?, CPF = ? WHERE PK_FORNECEDOR = ?");
         
-        stm.setString(1, d.getNome());
-        stm.setString(2, d.getCpf());
-        stm.setInt(3, d.getPk_Fornecedor());
+        stm.setString(1, f.getNome());
+        stm.setString(2, f.getCpf());
+        stm.setInt(3, f.getPk_fornecedor());
         
         stm.execute();
         

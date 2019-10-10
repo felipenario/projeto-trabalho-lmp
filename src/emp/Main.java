@@ -40,7 +40,7 @@ public class Main {
         
 
         
-        Cliente c = new Cliente(
+        /*Cliente c = new Cliente(
                 "Robersvaldo", 
                 new Date(2002, 5, 21), 
                 new Endereco(
@@ -68,5 +68,7 @@ public class Main {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+*/
     
+    }
 }

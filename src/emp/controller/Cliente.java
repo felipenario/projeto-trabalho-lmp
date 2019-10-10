@@ -11,7 +11,7 @@ public class Cliente {
     private int pk_cliente;
     private String nome;
     private Cpf cpf;
-    private cliente
+    private Clientes_Enderecos endereco;
 
 
     public Cliente(int pk_cliente, String nome, String cpf) {
@@ -19,6 +19,15 @@ public class Cliente {
         this.nome = nome;
         this.cpf = new Cpf(cpf);
     }
+
+    public Cliente(int pk_cliente, String nome, String cpf, Clientes_Enderecos endereco) {
+        this.pk_cliente = pk_cliente;
+        this.nome = nome;
+        this.cpf = new Cpf(cpf);
+        this.endereco = endereco;
+    }
+    
+    
 
     public String getNome() {
         return nome;
@@ -35,13 +44,21 @@ public class Cliente {
     public void setCpf(String numero) {
         this.cpf = new Cpf(numero);
     }
-    
-     
+
+    public Clientes_Enderecos getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Clientes_Enderecos endereco) {
+        this.endereco = endereco;
+    }
 
     @Override
     public String toString() {
-        return "Cliente{" + "nome=" + nome +  "cpf=" + cpf + '}';
+        return "Cliente{" + "pk_cliente=" + pk_cliente + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + '}';
     }
+      
+    
     
     public void print(){
         System.out.println(this);

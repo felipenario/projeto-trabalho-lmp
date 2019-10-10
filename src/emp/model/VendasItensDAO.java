@@ -45,78 +45,82 @@ public class VendasItensDAO {
         return pkset.getInt(1);
     }
     
-    public static Vendas retreave(int pk_venda) throws SQLException{
+    public static Vendas_Itens retreave(int pk_item) throws SQLException{
         Connection conn = DBConnection.getConnection();
         
         PreparedStatement stm = 
                 conn.prepareStatement(
-                "SELECT * FROM VENDAS WHERE PK_VENDA =" + pk_venda
+                "SELECT * FROM VENDAS_ITENS WHERE PK_ITEM =" + pk_item
                 );
         
-        stm.setInt(1, pk_venda);
+        stm.setInt(1, pk_item);
         
         stm.executeQuery();
                      
         ResultSet rs = stm.getResultSet();
         
         
-        Vendas b;
+        Vendas_Itens v;
         
         if (rs.next()){
-            b = new Vendas(
-                    rs.getInt("numero"),
-                    rs.getDate("data"),
-                    rs.getInt("pk_venda"));
+            v = new Vendas_Itens(
+                    rs.getInt("qtd"),
+                    rs.getDouble("valor_unitario"),
+                    rs.getInt("pk_item"),
+                    rs.getInt("fk_venda"),
+                    rs.getInt("fk_produto"));
             
-            return b;
+            return v;
 
                         
         } else{
-            throw new RuntimeException("Cliente não existe");                  
+            throw new RuntimeException("Os itens dessa venda não existe");                  
         }
       
     }
     
-    public static ArrayList<Venda> retreaveall(int pk_Vendas) throws SQLException{
+    public static ArrayList<Vendas_Itens> retreaveall(int pk_item) throws SQLException{
         Connection conn = DBConnection.getConnection();
         
         ResultSet rs = conn.createStatement().
-                executeQuery("SELECT * FROM VENDA WHERE PK_VENDA ="+pk_Vendas);
+                executeQuery("SELECT * FROM VENDA_ITENS WHERE PK_ITEM ="+pk_item);
         
-        ArrayList<Venda> vendas = new ArrayList<>();
+        ArrayList<Vendas_Itens> vendasitens = new ArrayList<>();
         
         while(rs.next()){
-            vendas.add(new Venda(pk_Vendas, rs.getInt("numero"), rs.getDate("date")) );
+            vendasitens.add(new Vendas_Itens(rs.getInt("qtd"), rs.getInt("valor_unitario"), pk_item, rs.getInt("fk_venda"), rs.getInt("fk_produto")) );
         }
 
-       return vendas;
+       return vendasitens;
     }
     
-    public static void delete(Venda b) throws SQLException{
+    public static void delete(Vendas_Itens v) throws SQLException{
         
          Connection conn = DBConnection.getConnection();
-         if(b.getPk_Venda() != 0){
-             conn.createStatement().execute("DELETE FROM VENDAS WHERE PK_VENDA =" + b.getPk_Venda());
+         if(v.getPk_item() != 0){
+             conn.createStatement().execute("DELETE FROM VENDAS_ITENS WHERE PK_ITEM =" + v.getPk_item());
              
              
          }else {
-            throw new RuntimeException("Cliente não existe");
+            throw new RuntimeException("Esse(s) item da venda não existem");
          }
         
         
     }
     
-        public static void update (Venda b) throws SQLException{
+        public static void update (Vendas_Itens v) throws SQLException{
         
         Connection conn = DBConnection.getConnection();
         
         PreparedStatement stm = 
                 conn.prepareStatement(
-                "UPDATE VENDAS SET NUMERO = ?, DATA = ? WHERE PK_VENDA = ?");
+                "UPDATE VENDAS_ITENS SET QTD = ?, VALOR_UNITARIO = ?, FK_VENDA = ?, FK_PRODUTO = ? WHERE PK_ITEM = ?");
         
-        stm.setInt(1, b.getNumero());
-        stm.setDate(2, b.getData());
-        stm.setInt(3, b.getPk_Venda());
+        stm.setInt(1, v.getQtd());
+        stm.setDouble(2, v.getValor_unitario());
+        stm.setInt(3, v.getFk_venda());
+        stm.setInt(4, v.getFk_produto());
+        stm.setInt(5, v.getPk_item());
         
         stm.execute();
         

@@ -5,7 +5,7 @@
  */
 package emp.model;
 
-import emp.controller.Endereco;
+import emp.controller.Clientes_Enderecos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,22 +17,22 @@ import java.sql.SQLException;
  */
 public class EnderecoDAO {
     
-    public static int create(Endereco e) throws SQLException{
+    public static int create(Clientes_Enderecos e) throws SQLException{
         Connection conn = DBConnection.getConnection();
         
         PreparedStatement stm = 
                 conn.prepareStatement(
-                "INSERT INTO endereco(fk_cliente, logradouro, numero, complemento, bairro, cidade, estado, cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                "INSERT INTO Clientes_Enderecos(fk_cliente, logradouro, bairro, cidade, estado, pais, cep) VALUES (?, ?, ?, ?, ?, ?, ?)",
                  PreparedStatement.RETURN_GENERATED_KEYS);
         
         stm.setInt(1, e.getFk_cliente());
         stm.setString(2, e.getLogradouro());
-        stm.setString(3, e.getNumero());
-        stm.setString(4, e.getComplemento());
-        stm.setString(5, e.getBairro());
-        stm.setString(6, e.getCidade());
-        stm.setString(7, e.getEstado());
-        stm.setString(8, e.getCep());
+        stm.setString(3, e.getBairro());
+        stm.setString(4, e.getCidade());
+        stm.setString(5, e.getEstado());
+        stm.setString(6, e.getPais());
+        stm.setString(7, e.getCep());
+ 
         
         stm.execute();
         
@@ -46,12 +46,12 @@ public class EnderecoDAO {
         return pkset.getInt(1);
     }
     
-    public static Endereco retreave(int pk_endereco) throws SQLException{
+    public static Clientes_Enderecos retreave(int pk_endereco) throws SQLException{
         Connection conn = DBConnection.getConnection();
         
         PreparedStatement stm = 
                 conn.prepareStatement(
-                "SELECT * FROM ENDERECO WHERE PK_ENDERECO=?"
+                "SELECT * FROM CLIENTES_ENDERECOS WHERE PK_ENDERECO=?"
                 );
         
         stm.setInt(1, pk_endereco);
@@ -61,13 +61,12 @@ public class EnderecoDAO {
         ResultSet rs = stm.getResultSet();
         
         if (rs.next()){
-            return new Endereco(                   
+            return new Clientes_Enderecos(                   
               rs.getString("logradouro"),
-              rs.getString("numero"),
-              rs.getString("complemento"),
               rs.getString("bairro"),
               rs.getString("cidade"),
               rs.getString("estado"),
+              rs.getString("pais"),
               rs.getString("cep"),
               rs.getInt("pk_endereco"),
               rs.getInt("fk_cliente")
@@ -77,54 +76,53 @@ public class EnderecoDAO {
         }
     }
     
-    public static Endereco retreaveall(int fk_cliente) throws SQLException{
+    public static Clientes_Enderecos retreaveall(int fk_cliente) throws SQLException{
         Connection conn = DBConnection.getConnection();
         
-       ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM TELEFONE WHERE FK_CLIENTE=" + fk_cliente);
-        Endereco e = null;
+       ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM CLIENTES_ENDERECOS WHERE FK_CLIENTE=" + fk_cliente);
+        Clientes_Enderecos e = null;
         if (rs.next()) {
-            e = new Endereco(
-                    rs.getString("logradouro"),
-                    rs.getString("numero"),
-                    rs.getString("complemento"),
-                    rs.getString("bairro"),
-                    rs.getString("cidade"),
-                    rs.getString("estado"),
-                    rs.getString("cep"),
-                    rs.getInt("pk_endereco"),
-                    rs.getInt("fk_cliente")
+            e = new Clientes_Enderecos(
+              rs.getString("logradouro"),
+              rs.getString("bairro"),
+              rs.getString("cidade"),
+              rs.getString("estado"),
+              rs.getString("pais"),
+              rs.getString("cep"),
+              rs.getInt("pk_endereco"),
+              rs.getInt("fk_cliente")
             );
         }
         return e;
     }
     
-     public static void delete(Endereco e) throws SQLException {
+     public static void delete(Clientes_Enderecos e) throws SQLException {
         Connection conn = DBConnection.getConnection();
 
         if (e.getPk_endereco() != 0) {
             conn.createStatement().
-                    execute("DELETE FROM endereco WHERE PK_ENDERECO=" + e.getPk_endereco());
+                    execute("DELETE FROM CLIENTES_ENDERECOS WHERE PK_ENDERECO=" + e.getPk_endereco());
         } else {
             throw new RuntimeException("Endereco nao existe no BD");
         }
 
     }
     
-     public static void update(Endereco e) throws SQLException {
+     public static void update(Clientes_Enderecos e) throws SQLException {
         Connection conn = DBConnection.getConnection();
 
         PreparedStatement stm = conn.prepareStatement(
-                "UPDATE ENDERECO SET LOGRADOURO=?, NUMERO=?, COMPLEMENTO=?, BAIRRO=?, CIDADE=?, ESTADO=?, CEP=?,PK_ENDERECO=? WHERE PK_TELEFONE=?");
+                "UPDATE ENDERECO SET LOGRADOURO=?, BAIRRO=?, CIDADE=?, ESTADO=?,PAIS = ?, CEP = ?, PK_ENDERECO = ? WHERE FK_CLIENTE = ?");
 
   //configura as interrogações pela ordem
         stm.setString(1, e.getLogradouro());
-        stm.setString(2, e.getNumero());
-        stm.setString(3, e.getComplemento());
-        stm.setString(4, e.getBairro());
-        stm.setString(5, e.getCidade());
-        stm.setString(6, e.getEstado());
-        stm.setString(7, e.getCep());
-        stm.setInt(8, e.getPk_endereco());
+        stm.setString(2, e.getBairro());
+        stm.setString(3, e.getCidade());
+        stm.setString(4, e.getEstado());
+        stm.setString(5, e.getPais());
+        stm.setString(6, e.getCep());
+        stm.setInt(7, e.getPk_endereco());
+        stm.setInt(8, e.getFk_cliente());
 
         stm.execute();
     }
