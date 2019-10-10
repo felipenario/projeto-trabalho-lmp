@@ -43,7 +43,7 @@ public class FinanceirosSaidasDAO {
         /*c.setPk_cliente(pkset.getInt(1));*/
         //configurou a chave estrangeira
 
-        //c.getEndereco().setFk_cliente(pkset.getInt(1));
+        f.setFk_compra(pkset.getInt(1));
         return pkset.getInt(1);
     }
 

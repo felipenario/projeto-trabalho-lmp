@@ -42,8 +42,8 @@ public class FinanceirosEntradasDAO {
         //configura a chave primaria gerada no objeto telefone
         /*c.setPk_cliente(pkset.getInt(1));*/
         //configurou a chave estrangeira
-
-        //c.getEndereco().setFk_cliente(pkset.getInt(1));
+         
+        f.setFk_venda(pkset.getInt(1));
         return pkset.getInt(1);
     }
 

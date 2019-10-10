@@ -38,6 +38,7 @@ public class FuncionariosEnderecosDAO {
         ResultSet pkset = stm.getGeneratedKeys();
         pkset.next();
 
+        e.setFk_funcionario(pkset.getInt(1));
         //configura a chave primaria gerada no objeto telefone
         e.setPk_endereco(pkset.getInt(1));
 

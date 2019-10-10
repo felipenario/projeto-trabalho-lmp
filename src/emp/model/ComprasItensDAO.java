@@ -37,6 +37,8 @@ public class ComprasItensDAO {
         pkset.next();
 
         //int pk = pkset.getInt(1);
+        c.setFk_compra(pkset.getInt(1));
+        c.setFk_produto(pkset.getInt(1));
         c.setPk_item(pkset.getInt(1));
 
         return pkset.getInt(1);

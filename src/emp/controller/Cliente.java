@@ -27,6 +27,15 @@ public class Cliente {
         this.endereco = endereco;
     }
 
+    public Cliente(String nome, String cpf, Clientes_Enderecos endereco) {
+        this.nome = nome;
+        this.cpf = new Cpf(cpf);
+        this.endereco = endereco;
+    }
+
+    
+    
+    
     public String getNome() {
         return nome;
     }

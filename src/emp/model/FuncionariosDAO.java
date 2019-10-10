@@ -40,7 +40,7 @@ public class FuncionariosDAO {
         /*c.setPk_funcionario(pkset.getInt(1));*/
         //configurou a chave estrangeira
 
-        //c.getEndereco().setFk_funcionario(pkset.getInt(1));
+        f.setFk_cargo(pkset.getInt(1));
         FuncionariosEnderecosDAO.create(f.getEndereco());
 
         return pkset.getInt(1);

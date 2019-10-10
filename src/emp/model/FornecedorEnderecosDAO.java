@@ -38,6 +38,7 @@ public class FornecedorEnderecosDAO {
         ResultSet pkset = stm.getGeneratedKeys();
         pkset.next();
 
+        f.setFk_fornecedor(pkset.getInt(1));
         //configura a chave primaria gerada no objeto telefone
         f.setPk_endereco(pkset.getInt(1));
 

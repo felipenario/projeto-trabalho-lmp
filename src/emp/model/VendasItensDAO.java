@@ -38,6 +38,7 @@ public class VendasItensDAO {
         pkset.next();
 
         //int pk = pkset.getInt(1);
+        v.setFk_produto(pkset.getInt(1));
         v.setPk_item(pkset.getInt(1));
 
         return pkset.getInt(1);

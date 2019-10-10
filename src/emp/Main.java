@@ -6,10 +6,14 @@
 package emp;
 
 import emp.controller.Cliente;
+import emp.controller.Clientes_Enderecos;
 import emp.controller.Endereco;
 import emp.controller.Telefone;
+import emp.controller.Vendas;
+import emp.controller.Vendas_Itens;
 import emp.model.ClienteDAO;
 import emp.model.TelefoneDAO;
+import emp.model.VendaDAO;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -38,22 +42,20 @@ public class Main {
             */
         
         
-
+        Clientes_Enderecos e = new Clientes_Enderecos("aaaaa", "bbbbb", "aaa", "go", "bbbbb", "bbbbb");
         
-        /*Cliente c = new Cliente(
-                "Robersvaldo", 
-                new Date(2002, 5, 21), 
-                new Endereco(
-                "Rua das Bolinhas",
-                "456A",
-                "Qd 75, Lt 10",
-                "St Bela Vista",
-                "Goiânia",
-                "GO",
-                "74500-000"),
-               "92141730104");
         
-        ArrayList<Telefone> tels = new ArrayList<>();
+        Cliente c = new Cliente("Jukera", "60837094151", e);
+        
+        ArrayList<Vendas_Itens> itens = new ArrayList<>();
+        itens.add(new Vendas_Itens(1, 2.500));
+        
+        Vendas v = new Vendas(12, new Date(System.currentTimeMillis()), itens);
+        
+        //Date.valueOf("2019-10-10")
+        
+        
+       /* ArrayList<Telefone> tels = new ArrayList<>();
         tels.add(new Telefone(64, "99999-8888"));
         tels.add(new Telefone(64, "99999-7777"));
         tels.add(new Telefone(64, "99999-5555"));
@@ -61,14 +63,20 @@ public class Main {
         tels.add(new Telefone(64, "99999-3333"));
         
         c.setTelefones(tels);
-        
-        try {
+        */
+       /* try {
             ClienteDAO.create(c);
         } catch (SQLException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
+        */
+        try {
+            VendaDAO.create(v);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
-*/
+
     
-    }
-}
+ }

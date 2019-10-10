@@ -44,6 +44,14 @@ public class Vendas {
         this.fk_vendedor = fk_vendedor;
     }
 
+    public Vendas(int numero, Date data, ArrayList<Vendas_Itens> vendasItens) {
+        this.numero = numero;
+        this.data = data;
+        this.vendasItens = vendasItens;
+    }
+    
+    
+
     public int getNumero() {
         return numero;
     }

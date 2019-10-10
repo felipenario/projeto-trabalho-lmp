@@ -39,7 +39,7 @@ public class ClienteDAO {
         /*c.setPk_cliente(pkset.getInt(1));*/
         //configurou a chave estrangeira
 
-        //c.getEndereco().setFk_cliente(pkset.getInt(1));
+        c.getEndereco().setFk_cliente(pkset.getInt(1));
         ClientesEnderecosDAO.create(c.getEndereco());
 
         return pkset.getInt(1);

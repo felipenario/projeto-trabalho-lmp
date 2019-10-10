@@ -31,14 +31,17 @@ public class VendaDAO {
         stm.setInt(2, v.getFk_vendedor());
         stm.setInt(3, v.getNumero());
         stm.setDate(4, v.getData());
-
+            
         stm.execute();
 
         ResultSet pkset = stm.getGeneratedKeys();
         pkset.next();
 
         //int pk = pkset.getInt(1);
+        v.setFk_cliente(pkset.getInt(1));
+        v.setFk_vendedor(pkset.getInt(1));
         v.setPk_venda(pkset.getInt(1));
+       
 
         for (Vendas_Itens t : v.getVendasItens()) {
 
