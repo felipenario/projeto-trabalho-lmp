@@ -6,6 +6,7 @@
 package emp.controller;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,20 +16,10 @@ public class Compras {
     
     private int numero;
     private Date datas;
-    
+    private ArrayList<Compras_Itens> comprasitens;
+            
     private int pk_compra;
     private int fk_fornecedor;
-
-    public Compras(int numero, Date datas) {
-        this.numero = numero;
-        this.datas = datas;
-    }
-
-    public Compras(int numero, Date datas, int pk_compra) {
-        this.numero = numero;
-        this.datas = datas;
-        this.pk_compra = pk_compra;
-    }
 
     public Compras(int numero, Date datas, int pk_compra, int fk_fornecedor) {
         this.numero = numero;
@@ -36,6 +27,16 @@ public class Compras {
         this.pk_compra = pk_compra;
         this.fk_fornecedor = fk_fornecedor;
     }
+
+    public Compras(int numero, Date datas, ArrayList<Compras_Itens> comprasitens, int pk_compra, int fk_fornecedor) {
+        this.numero = numero;
+        this.datas = datas;
+        this.comprasitens = comprasitens;
+        this.pk_compra = pk_compra;
+        this.fk_fornecedor = fk_fornecedor;
+    }
+
+    
 
     public int getNumero() {
         return numero;
@@ -69,9 +70,17 @@ public class Compras {
         this.fk_fornecedor = fk_fornecedor;
     }
 
+    public ArrayList<Compras_Itens> getComprasitens() {
+        return comprasitens;
+    }
+
+    public void setComprasitens(ArrayList<Compras_Itens> comprasitens) {
+        this.comprasitens = comprasitens;
+    }
+
     @Override
     public String toString() {
-        return "Compras{" + "numero=" + numero + ", datas=" + datas + ", pk_compra=" + pk_compra + ", fk_fornecedor=" + fk_fornecedor + '}';
+        return "Compras{" + "numero=" + numero + ", datas=" + datas + ", comprasitens=" + comprasitens + ", pk_compra=" + pk_compra + ", fk_fornecedor=" + fk_fornecedor + '}';
     }
     
     

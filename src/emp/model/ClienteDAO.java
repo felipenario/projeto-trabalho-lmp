@@ -6,8 +6,6 @@
 package emp.model;
 
 import emp.controller.Cliente;
-import emp.controller.Clientes_Enderecos;
-import emp.controller.Telefone;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,7 +22,7 @@ public class ClienteDAO {
         
         PreparedStatement stm = 
                 conn.prepareStatement(
-                "INSERT INTO cliente(nome, cpf) VALUES (?, ?)",
+                "INSERT INTO clientes(nome, cpf) VALUES (?, ?)",
                  PreparedStatement.RETURN_GENERATED_KEYS);
               
         stm.setString(1, c.getNome());
@@ -43,7 +41,7 @@ public class ClienteDAO {
      
         //c.getEndereco().setFk_cliente(pkset.getInt(1));
         
-        EnderecoDAO.create(c.getEndereco());
+        ClientesEnderecosDAO.create(c.getEndereco());
     
         return pkset.getInt(1);
     }
@@ -53,7 +51,7 @@ public class ClienteDAO {
         
         PreparedStatement stm = 
                 conn.prepareStatement(
-                "SELECT * FROM CLIENTE WHERE PK_CLIENTE =" + pk_cliente
+                "SELECT * FROM CLIENTES WHERE PK_CLIENTE =" + pk_cliente
                 );
         
         stm.setInt(1, pk_cliente);
@@ -87,7 +85,7 @@ public class ClienteDAO {
         Connection conn = DBConnection.getConnection();
         
         ResultSet rs = conn.createStatement().
-                executeQuery("SELECT * FROM CLIENTE WHERE PK_CLIENTE ="+pk_cliente);
+                executeQuery("SELECT * FROM CLIENTES WHERE PK_CLIENTE ="+pk_cliente);
         
         ArrayList<Cliente> clientes = new ArrayList<>();
         
@@ -102,7 +100,7 @@ public class ClienteDAO {
         
          Connection conn = DBConnection.getConnection();
          if(c.getPk_cliente() != 0){
-             conn.createStatement().execute("DELETE FROM CLIENTE WHERE PK_CLIENTE =" + c.getPk_cliente());
+             conn.createStatement().execute("DELETE FROM CLIENTES WHERE PK_CLIENTE =" + c.getPk_cliente());
              
              
          }else {
@@ -118,7 +116,7 @@ public class ClienteDAO {
         
         PreparedStatement stm = 
                 conn.prepareStatement(
-                "UPDATE CLIENTE SET NOME = ?, NASCIMENTO = ?, CPF = ? WHERE PK_CLIENTE = ?");
+                "UPDATE CLIENTES SET NOME = ?, NASCIMENTO = ?, CPF = ? WHERE PK_CLIENTE = ?");
         
         stm.setString(1, c.getNome());
         stm.setString(3, c.getCpf());

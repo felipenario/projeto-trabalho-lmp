@@ -15,7 +15,7 @@ import java.sql.SQLException;
  *
  * @author Felipe Nário
  */
-public class EnderecoDAO {
+public class ClientesEnderecosDAO {
     
     public static int create(Clientes_Enderecos e) throws SQLException{
         Connection conn = DBConnection.getConnection();

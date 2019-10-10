@@ -89,11 +89,11 @@ public class VendaDAO {
       
     }
     
-    public static ArrayList<Vendas> retreaveall(int pk_Vendas) throws SQLException{
+    public static ArrayList<Vendas> retreaveall(int pk_venda) throws SQLException{
         Connection conn = DBConnection.getConnection();
         
         ResultSet rs = conn.createStatement().
-                executeQuery("SELECT * FROM VENDAS WHERE PK_VENDA ="+pk_Vendas);
+                executeQuery("SELECT * FROM VENDAS WHERE PK_VENDA ="+pk_venda);
         
         ArrayList<Vendas> vendas = new ArrayList<>();
         
