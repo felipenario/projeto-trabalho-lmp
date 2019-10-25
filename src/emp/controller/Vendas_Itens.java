@@ -23,12 +23,6 @@ public class Vendas_Itens {
         this.valor_unitario = valor_unitario;
     }
 
-    public Vendas_Itens(int qtd, double valor_unitario, int pk_item) {
-        this.qtd = qtd;
-        this.valor_unitario = valor_unitario;
-        this.pk_item = pk_item;
-    }
-
     public Vendas_Itens(int qtd, double valor_unitario, int pk_item, int fk_venda) {
         this.qtd = qtd;
         this.valor_unitario = valor_unitario;
@@ -41,6 +35,12 @@ public class Vendas_Itens {
         this.valor_unitario = valor_unitario;
         this.pk_item = pk_item;
         this.fk_venda = fk_venda;
+        this.fk_produto = fk_produto;
+    }
+
+    public Vendas_Itens(int qtd, double valor_unitario, int fk_produto) {
+        this.qtd = qtd;
+        this.valor_unitario = valor_unitario;
         this.fk_produto = fk_produto;
     }
 

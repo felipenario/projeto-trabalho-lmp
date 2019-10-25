@@ -30,14 +30,6 @@ public class Financeiros_Saidas {
         this.tipo_documento = tipo_documento;
     }
 
-    public Financeiros_Saidas(Date data_emissao, Date data_vencimento, Date data_baixa, double valor, String tipo_documento, int pk_financeiro) {
-        this.data_emissao = data_emissao;
-        this.data_vencimento = data_vencimento;
-        this.data_baixa = data_baixa;
-        this.valor = valor;
-        this.tipo_documento = tipo_documento;
-        this.pk_financeiro = pk_financeiro;
-    }
 
     public Financeiros_Saidas(Date data_emissao, Date data_vencimento, Date data_baixa, double valor, String tipo_documento, int pk_financeiro, int fk_compra) {
         this.data_emissao = data_emissao;
@@ -48,6 +40,17 @@ public class Financeiros_Saidas {
         this.pk_financeiro = pk_financeiro;
         this.fk_compra = fk_compra;
     }
+
+    public Financeiros_Saidas(Date data_emissao, Date data_vencimento, Date data_baixa, double valor, String tipo_documento, int fk_compra) {
+        this.data_emissao = data_emissao;
+        this.data_vencimento = data_vencimento;
+        this.data_baixa = data_baixa;
+        this.valor = valor;
+        this.tipo_documento = tipo_documento;
+        this.fk_compra = fk_compra;
+    }
+    
+    
 
     public Date getData_emissao() {
         return data_emissao;

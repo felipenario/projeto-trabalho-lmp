@@ -23,7 +23,7 @@ public class FuncionariosDAO {
 
         PreparedStatement stm
                 = conn.prepareStatement(
-                        "INSERT INTO funcionario(fk_cargo, nome, cpf) VALUES (?, ?, ?)",
+                        "INSERT INTO funcionarios(fk_cargo, nome, cpf) VALUES (?, ?, ?)",
                         PreparedStatement.RETURN_GENERATED_KEYS);
 
         stm.setInt(1, f.getFk_cargo());

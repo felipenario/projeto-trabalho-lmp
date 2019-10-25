@@ -36,6 +36,15 @@ public class Compras {
         this.fk_fornecedor = fk_fornecedor;
     }
 
+    public Compras(int numero, Date datas, ArrayList<Compras_Itens> comprasitens, int fk_fornecedor) {
+        this.numero = numero;
+        this.datas = datas;
+        this.comprasitens = comprasitens;
+        this.fk_fornecedor = fk_fornecedor;
+    }
+    
+    
+
     public int getNumero() {
         return numero;
     }

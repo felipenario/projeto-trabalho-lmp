@@ -49,6 +49,15 @@ public class Vendas {
         this.data = data;
         this.vendasItens = vendasItens;
     }
+
+    public Vendas(int numero, Date data, ArrayList<Vendas_Itens> vendasItens, int fk_cliente, int fk_vendedor) {
+        this.numero = numero;
+        this.data = data;
+        this.vendasItens = vendasItens;
+        this.fk_cliente = fk_cliente;
+        this.fk_vendedor = fk_vendedor;
+    }
+    
     
     
 

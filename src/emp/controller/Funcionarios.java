@@ -38,6 +38,14 @@ public class Funcionarios {
         this.endereco = endereco;
     }
 
+    public Funcionarios(String nome, String cpf, Funcionarios_Enderecos endereco, int fk_cargo) {
+        this.nome = nome;
+        this.cpf = new Cpf(cpf);
+        this.endereco = endereco;
+        this.fk_cargo = fk_cargo;
+    }
+    
+
     public String getNome() {
         return nome;
     }

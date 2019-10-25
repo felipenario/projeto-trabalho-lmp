@@ -18,11 +18,7 @@ public class Compras_Itens {
     private int fk_compra;
     private int fk_produto;
 
-    public Compras_Itens(int qtd, double valor_unitario, int pk_item) {
-        this.qtd = qtd;
-        this.valor_unitario = valor_unitario;
-        this.pk_item = pk_item;
-    }
+ 
 
     public Compras_Itens(int qtd, double valor_unitario, int pk_item, int fk_compra) {
         this.qtd = qtd;
@@ -38,6 +34,14 @@ public class Compras_Itens {
         this.fk_compra = fk_compra;
         this.fk_produto = fk_produto;
     }
+
+    public Compras_Itens(int qtd, double valor_unitario, int fk_produto) {
+        this.qtd = qtd;
+        this.valor_unitario = valor_unitario;
+        this.fk_produto = fk_produto;
+    }
+    
+    
 
     public int getQtd() {
         return qtd;

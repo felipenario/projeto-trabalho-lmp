@@ -22,7 +22,7 @@ public class FuncionariosEnderecosDAO {
 
         PreparedStatement stm
                 = conn.prepareStatement(
-                        "INSERT INTO Funcionarios_Enderecos(fk_funcionario, logradouro, bairro, cidade, estado, pais, cep) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                        "INSERT INTO Funcionarios_Enderecos(fk_funcionario, logadouro, bairro, cidade, estado, pais, cep) VALUES (?, ?, ?, ?, ?, ?, ?)",
                         PreparedStatement.RETURN_GENERATED_KEYS);
 
         stm.setInt(1, e.getFk_funcionario());
@@ -38,7 +38,7 @@ public class FuncionariosEnderecosDAO {
         ResultSet pkset = stm.getGeneratedKeys();
         pkset.next();
 
-        e.setFk_funcionario(pkset.getInt(1));
+        
         //configura a chave primaria gerada no objeto telefone
         e.setPk_endereco(pkset.getInt(1));
 
@@ -61,7 +61,7 @@ public class FuncionariosEnderecosDAO {
 
         if (rs.next()) {
             return new Funcionarios_Enderecos(
-                    rs.getString("logradouro"),
+                    rs.getString("logadouro"),
                     rs.getString("bairro"),
                     rs.getString("cidade"),
                     rs.getString("estado"),
@@ -82,7 +82,7 @@ public class FuncionariosEnderecosDAO {
         Funcionarios_Enderecos e = null;
         if (rs.next()) {
             e = new Funcionarios_Enderecos(
-                    rs.getString("logradouro"),
+                    rs.getString("logadouro"),
                     rs.getString("bairro"),
                     rs.getString("cidade"),
                     rs.getString("estado"),
@@ -111,7 +111,7 @@ public class FuncionariosEnderecosDAO {
         Connection conn = DBConnection.getConnection();
 
         PreparedStatement stm = conn.prepareStatement(
-                "UPDATE ENDERECO SET LOGRADOURO=?, BAIRRO=?, CIDADE=?, ESTADO=?,PAIS = ?, CEP = ?, PK_ENDERECO = ? WHERE FK_FUNCIONARIO = ?");
+                "UPDATE ENDERECO SET LOGADOURO=?, BAIRRO=?, CIDADE=?, ESTADO=?,PAIS = ?, CEP = ?, PK_ENDERECO = ? WHERE FK_FUNCIONARIO = ?");
 
         //configura as interrogações pela ordem
         stm.setString(1, e.getLogradouro());
