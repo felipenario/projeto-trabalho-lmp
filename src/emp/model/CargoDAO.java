@@ -69,16 +69,16 @@ public class CargoDAO {
 
     }
 
-    public static ArrayList<Cargo> retreaveall(int pk_cargo) throws SQLException {
+    public static ArrayList<Cargo> retreaveall() throws SQLException {
         Connection conn = DBConnection.getConnection();
 
         ResultSet rs = conn.createStatement().
-                executeQuery("SELECT * FROM CARGOS WHERE PK_CARGO =" + pk_cargo);
+                executeQuery("SELECT * FROM CARGOS");
 
         ArrayList<Cargo> cargo = new ArrayList<>();
 
         while (rs.next()) {
-            cargo.add(new Cargo(pk_cargo, rs.getString("nome"), rs.getString("descricao")));
+            cargo.add(new Cargo(rs.getInt("pk_cargo"), rs.getString("nome"), rs.getString("descricao")));
         }
 
         return cargo;

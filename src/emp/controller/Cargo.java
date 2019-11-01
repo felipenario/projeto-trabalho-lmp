@@ -52,7 +52,9 @@ public class Cargo {
 
     @Override
     public String toString() {
-        return "Cargo{" + "pk_cargo=" + pk_cargo + ", nome=" + nome + ", descricao=" + descricao + '}';
+        return "" + nome +"";
     }
+
+   
 
 }
