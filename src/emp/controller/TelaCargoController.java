@@ -68,6 +68,8 @@ public class TelaCargoController {
         } catch (SQLException ex) {
             Logger.getLogger(TelaCargoController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        lvCargos.refresh();
 
     }
 
