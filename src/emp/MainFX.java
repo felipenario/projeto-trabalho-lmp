@@ -30,7 +30,7 @@ public class MainFX extends Application {
         
         
         try {
-            root = FXMLLoader.load(getClass().getResource("view/TelaCargo.fxml"));
+            root = FXMLLoader.load(getClass().getResource("view/TelaCliente.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -39,6 +39,8 @@ public class MainFX extends Application {
         } catch (IOException ex) {
             Logger.getLogger(MainFX.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+         
         
     }
 

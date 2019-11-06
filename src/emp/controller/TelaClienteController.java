@@ -18,7 +18,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-public class TelaCargoController {
+public class TelaClienteController {
 
     @FXML
     private ResourceBundle resources;
@@ -31,9 +31,9 @@ public class TelaCargoController {
 
     @FXML
     private TextField tfNome;
-
+   
     @FXML
-    private TextArea taDescricao;
+    private TextField tfCPF;
 
     @FXML
     private Button btInserir;
@@ -80,7 +80,7 @@ public class TelaCargoController {
                 lvCargos.setDisable(false);
                 lvCargos.getSelectionModel().clearSelection();
             } catch (SQLException ex) {
-                Logger.getLogger(TelaCargoController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TelaClienteController.class.getName()).log(Level.SEVERE, null, ex);
                 Alert erroAlerta = new Alert(Alert.AlertType.ERROR);
                 erroAlerta.setHeaderText("Ih rapaz aí deu ruim");
                 erroAlerta.setContentText(ex.getMessage());
@@ -106,7 +106,7 @@ public class TelaCargoController {
                 CargoDAO.create(c);
                 lvCargos.getItems().add(c);
             } catch (SQLException ex) {
-                Logger.getLogger(TelaCargoController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TelaClienteController.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }else{
@@ -117,7 +117,7 @@ public class TelaCargoController {
         try {
             CargoDAO.update(c);
         } catch (SQLException ex) {
-            Logger.getLogger(TelaCargoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaClienteController.class.getName()).log(Level.SEVERE, null, ex);
         }
      }
         
@@ -133,7 +133,7 @@ public class TelaCargoController {
             ObservableList<Cargo> listaCargos = FXCollections.observableArrayList(CargoDAO.retreaveall());
             lvCargos.setItems(listaCargos);
         } catch (SQLException ex) {
-            Logger.getLogger(TelaCargoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaClienteController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
