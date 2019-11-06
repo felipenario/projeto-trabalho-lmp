@@ -9,14 +9,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="emp.controller.TelaCargoController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emp.controller.TelaCargoController">
    <children>
       <SplitPane dividerPositions="0.29797979797979796" prefHeight="400.0" prefWidth="608.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <ListView fx:id="lvCargos" layoutY="-1.0" onMouseClicked="#altereCargo" prefHeight="400.0" prefWidth="177.0" />
+                  <ListView fx:id="lvCargos" editable="true" layoutY="-1.0" onMouseClicked="#altereCargo" prefHeight="400.0" prefWidth="177.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -34,13 +33,13 @@
                   </Label>
                   <TextArea fx:id="taDescricao" layoutX="15.0" layoutY="186.0" prefHeight="127.0" prefWidth="384.0" promptText="Digite uma breve descrição" wrapText="true" />
                   <Label layoutX="19.0" layoutY="157.0" prefHeight="18.0" prefWidth="104.0" text="Descricao:" />
-                  <Button fx:id="btInserir" layoutX="22.0" layoutY="346.0" mnemonicParsing="false" onAction="#inserir" text="Inserir" />
                   <Button layoutX="254.0" layoutY="346.0" mnemonicParsing="false" onAction="#salvar" text="Salvar" />
                   <Button layoutX="322.0" layoutY="346.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" textFill="RED">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
+                  <Button fx:id="btExcluir" disable="true" layoutX="19.0" layoutY="346.0" mnemonicParsing="false" onAction="#excluir" text="Excluir" />
                </children>
             </AnchorPane>
         </items>

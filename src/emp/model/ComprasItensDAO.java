@@ -76,16 +76,16 @@ public class ComprasItensDAO {
 
     }
 
-    public static ArrayList<Compras_Itens> retreaveall(int pk_item) throws SQLException {
+    public static ArrayList<Compras_Itens> retreaveall() throws SQLException {
         Connection conn = DBConnection.getConnection();
 
         ResultSet rs = conn.createStatement().
-                executeQuery("SELECT * FROM COMPRAS_ITENS WHERE PK_ITEM =" + pk_item);
+                executeQuery("SELECT * FROM COMPRAS_ITENS");
 
         ArrayList<Compras_Itens> comprasitens = new ArrayList<>();
 
         while (rs.next()) {
-            comprasitens.add(new Compras_Itens(rs.getInt("qtd"), rs.getInt("valor_unitario"), pk_item, rs.getInt("fk_compra"), rs.getInt("fk_produto")));
+            comprasitens.add(new Compras_Itens(rs.getInt("qtd"), rs.getInt("valor_unitario"), rs.getInt("pk_item"), rs.getInt("fk_compra"), rs.getInt("fk_produto")));
         }
 
         return comprasitens;

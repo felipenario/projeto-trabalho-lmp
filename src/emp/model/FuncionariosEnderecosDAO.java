@@ -75,10 +75,10 @@ public class FuncionariosEnderecosDAO {
         }
     }
 
-    public static Funcionarios_Enderecos retreaveall(int fk_funcionario) throws SQLException {
+    public static Funcionarios_Enderecos retreaveall() throws SQLException {
         Connection conn = DBConnection.getConnection();
 
-        ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM FUNCIONARIOS_ENDERECOS WHERE FK_FUNCIONARIO=" + fk_funcionario);
+        ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM FUNCIONARIOS_ENDERECOS ");
         Funcionarios_Enderecos e = null;
         if (rs.next()) {
             e = new Funcionarios_Enderecos(

@@ -79,16 +79,16 @@ public class ClienteDAO {
 
     }
 
-    public static ArrayList<Cliente> retreaveall(int pk_cliente) throws SQLException {
+    public static ArrayList<Cliente> retreaveall() throws SQLException {
         Connection conn = DBConnection.getConnection();
 
         ResultSet rs = conn.createStatement().
-                executeQuery("SELECT * FROM CLIENTES WHERE PK_CLIENTE =" + pk_cliente);
+                executeQuery("SELECT * FROM CLIENTES ");
 
         ArrayList<Cliente> clientes = new ArrayList<>();
 
         while (rs.next()) {
-            clientes.add(new Cliente(pk_cliente, rs.getString("nome"), rs.getString("cpf")));
+            clientes.add(new Cliente(rs.getInt("pk_cliente"), rs.getString("nome"), rs.getString("cpf")));
         }
 
         return clientes;

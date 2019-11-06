@@ -73,7 +73,7 @@ public class ComprasDAO {
                     rs.getInt("pk_compra"),
                     rs.getInt("fk_fornecedor"));
 
-            c.setComprasitens(ComprasItensDAO.retreaveall(c.getPk_compra()));
+            c.setComprasitens(ComprasItensDAO.retreaveall());
 
             return c;
 
@@ -83,11 +83,11 @@ public class ComprasDAO {
 
     }
 
-    public static ArrayList<Compras> retreaveall(int pk_compra) throws SQLException {
+    public static ArrayList<Compras> retreaveall() throws SQLException {
         Connection conn = DBConnection.getConnection();
 
         ResultSet rs = conn.createStatement().
-                executeQuery("SELECT * FROM COMPRAS WHERE PK_COMRPA =" + pk_compra);
+                executeQuery("SELECT * FROM COMPRAS ");
 
         ArrayList<Compras> compras = new ArrayList<>();
 

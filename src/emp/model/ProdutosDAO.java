@@ -72,16 +72,16 @@ public class ProdutosDAO {
 
     }
 
-    public static ArrayList<Produtos> retreaveall(int pk_produto) throws SQLException {
+    public static ArrayList<Produtos> retreaveall() throws SQLException {
         Connection conn = DBConnection.getConnection();
 
         ResultSet rs = conn.createStatement().
-                executeQuery("SELECT * FROM PRODUTOS WHERE PK_PRODUTO =" + pk_produto);
+                executeQuery("SELECT * FROM PRODUTOS ");
 
         ArrayList<Produtos> produtos = new ArrayList<>();
 
         while (rs.next()) {
-            produtos.add(new Produtos(rs.getString("nome"), rs.getInt("estoque_minimo"), rs.getInt("qtd_estoque"), pk_produto));
+            produtos.add(new Produtos(rs.getString("nome"), rs.getInt("estoque_minimo"), rs.getInt("qtd_estoque"), rs.getInt("pk_produto")));
         }
 
         return produtos;

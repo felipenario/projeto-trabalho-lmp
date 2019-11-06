@@ -71,11 +71,11 @@ public class FornecedorDAO {
 
     }
 
-    public static ArrayList<Fornecedor> retreaveall(int pk_Fornecedor) throws SQLException {
+    public static ArrayList<Fornecedor> retreaveall() throws SQLException {
         Connection conn = DBConnection.getConnection();
 
         ResultSet rs = conn.createStatement().
-                executeQuery("SELECT * FROM FORNECEDORES WHERE PK_FORNECEDOR =" + pk_Fornecedor);
+                executeQuery("SELECT * FROM FORNECEDORES ");
 
         ArrayList<Fornecedor> fornecedores = new ArrayList<>();
 

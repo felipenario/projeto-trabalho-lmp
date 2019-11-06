@@ -81,18 +81,18 @@ public class FuncionariosDAO {
 
     }
 
-    public static ArrayList<Funcionarios> retreaveall(int pk_funcionario) throws SQLException {
+    public static ArrayList<Funcionarios> retreaveall() throws SQLException {
         Connection conn = DBConnection.getConnection();
 
         ResultSet rs = conn.createStatement().
-                executeQuery("SELECT * FROM FUNCIONARIOS WHERE PK_FUNCIONARIO =" + pk_funcionario);
+                executeQuery("SELECT * FROM FUNCIONARIOS ");
 
         ArrayList<Funcionarios> funcionarios = new ArrayList<>();
 
         while (rs.next()) {
             funcionarios.add(new Funcionarios(rs.getString("nome"),
                     rs.getString("cpf"),
-                    pk_funcionario,
+                    rs.getInt("pk_funcionario"),
                     rs.getInt("fk_cargo")));
         }
 

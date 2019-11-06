@@ -86,11 +86,11 @@ public class FinanceirosEntradasDAO {
 
     }
 
-    public static ArrayList<Financeiros_Entradas> retreaveall(int pk_entrada) throws SQLException {
+    public static ArrayList<Financeiros_Entradas> retreaveall() throws SQLException {
         Connection conn = DBConnection.getConnection();
 
         ResultSet rs = conn.createStatement().
-                executeQuery("SELECT * FROM FINANCEIROS_ENTRADAS WHERE PK_ENTRADA =" + pk_entrada);
+                executeQuery("SELECT * FROM FINANCEIROS_ENTRADAS ");
 
         ArrayList<Financeiros_Entradas> entradas = new ArrayList<>();
 
@@ -100,7 +100,7 @@ public class FinanceirosEntradasDAO {
                     rs.getDate("data_baixa"),
                     rs.getDouble("valor"),
                     rs.getString("tipo_documento"),
-                    pk_entrada,
+                    rs.getInt("pk_entrada"),
                     rs.getInt("fk_venda")));
         }
 

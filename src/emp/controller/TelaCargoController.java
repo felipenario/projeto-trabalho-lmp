@@ -10,7 +10,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -35,6 +37,9 @@ public class TelaCargoController {
 
     @FXML
     private Button btInserir;
+    
+    @FXML
+    private Button btExcluir;
 
     @FXML
     void altereCargo(MouseEvent event) {
@@ -43,22 +48,64 @@ public class TelaCargoController {
             Cargo c = lvCargos.getSelectionModel().getSelectedItem();
             tfNome.setText(c.getNome());
             taDescricao.setText(c.getDescricao());
+            lvCargos.setDisable(true);
+            btExcluir.setDisable(false);
         }
         
     }
 
     @FXML
     void cancelar(ActionEvent event) {
+        
+        limpaTela();
+        btInserir.setDisable(true);
 
     }
 
-    @FXML
-    void inserir(ActionEvent event) {
-
+   @FXML
+    void excluir(ActionEvent event) {
+        
+        Alert desejaExcluir = new Alert(Alert.AlertType.CONFIRMATION);
+        desejaExcluir.setTitle("Atenção aí ow");
+        desejaExcluir.setHeaderText("FICA LIGADO AI MORO?");
+        desejaExcluir.setContentText("MAS VOCÊ ESTÁ CERTO DISSO? ~voz do Silvio Santos~");
+        
+        desejaExcluir.showAndWait();
+        
+        if(desejaExcluir.showAndWait().get() == ButtonType.OK){
+        
+            try {   
+                Cargo c = lvCargos.getSelectionModel().getSelectedItem();
+                CargoDAO.delete(c);
+                lvCargos.getItems().remove(c);
+                lvCargos.refresh();
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaCargoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        
     }
 
     @FXML
     void salvar(ActionEvent event) {
+        
+        if(tfNome.getText().equals("")){
+            
+            throw new RuntimeException("Existem campos vazios!");
+        }
+        
+        if(lvCargos.getSelectionModel().isEmpty()){
+            
+            Cargo c = new Cargo(tfNome.getText(), taDescricao.getText());
+            try {
+                CargoDAO.create(c);
+                lvCargos.getItems().add(c);
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaCargoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }else{
         
         Cargo c = lvCargos.getSelectionModel().getSelectedItem();
         c.setNome(tfNome.getText());
@@ -68,7 +115,9 @@ public class TelaCargoController {
         } catch (SQLException ex) {
             Logger.getLogger(TelaCargoController.class.getName()).log(Level.SEVERE, null, ex);
         }
+     }
         
+        limpaTela();
         lvCargos.refresh();
 
     }
@@ -84,4 +133,17 @@ public class TelaCargoController {
         }
 
     }
+    
+    private void limpaTela(){
+        
+        tfNome.clear();
+        taDescricao.clear();
+        lvCargos.getSelectionModel().clearSelection();
+        lvCargos.setDisable(false);
+        btExcluir.setDisable(true);
+       
+        
+    }
+    
+    
 }

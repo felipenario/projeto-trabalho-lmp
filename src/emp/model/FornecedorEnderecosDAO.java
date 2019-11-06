@@ -75,10 +75,10 @@ public class FornecedorEnderecosDAO {
         }
     }
 
-    public static Fornecedores_Enderecos retreaveall(int fk_fornecedor) throws SQLException {
+    public static Fornecedores_Enderecos retreaveall() throws SQLException {
         Connection conn = DBConnection.getConnection();
 
-        ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM FORNECEDORES_ENDERECOS WHERE FK_FORNECEDOR=" + fk_fornecedor);
+        ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM FORNECEDORES_ENDERECOS ");
         Fornecedores_Enderecos f = null;
         if (rs.next()) {
             f = new Fornecedores_Enderecos(

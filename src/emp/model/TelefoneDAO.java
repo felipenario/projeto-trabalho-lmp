@@ -80,11 +80,11 @@ public class TelefoneDAO {
         }
     }
 
-    public static ArrayList<Telefone> retreaveall(int fk_cliente) throws SQLException {
+    public static ArrayList<Telefone> retreaveall() throws SQLException {
         Connection conn = DBConnection.getConnection();
 
         ResultSet rs = conn.createStatement().
-                executeQuery("SELECT * FROM TELEFONE WHERE FK_CLIENTE =" + fk_cliente);
+                executeQuery("SELECT * FROM TELEFONE ");
 
         ArrayList<Telefone> telefones = new ArrayList<>();
 
@@ -92,7 +92,7 @@ public class TelefoneDAO {
             telefones.add(new Telefone(rs.getInt("ddd"),
                     rs.getString("numero"),
                     rs.getInt("pk_telefone"),
-                    fk_cliente));
+                    rs.getInt("fk_cliente")));
         }
 
         return telefones;

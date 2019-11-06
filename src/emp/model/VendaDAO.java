@@ -77,7 +77,7 @@ public class VendaDAO {
                     rs.getInt("fk_cliente"),
                     rs.getInt("fk_vendedor"));
 
-            v.setVendasItens(VendasItensDAO.retreaveall(v.getPk_venda()));
+            v.setVendasItens(VendasItensDAO.retreaveall());
 
             return v;
 
@@ -87,11 +87,11 @@ public class VendaDAO {
 
     }
 
-    public static ArrayList<Vendas> retreaveall(int pk_venda) throws SQLException {
+    public static ArrayList<Vendas> retreaveall() throws SQLException {
         Connection conn = DBConnection.getConnection();
 
         ResultSet rs = conn.createStatement().
-                executeQuery("SELECT * FROM VENDAS WHERE PK_VENDA =" + pk_venda);
+                executeQuery("SELECT * FROM VENDAS ");
 
         ArrayList<Vendas> vendas = new ArrayList<>();
 

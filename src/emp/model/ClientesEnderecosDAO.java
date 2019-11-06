@@ -74,10 +74,10 @@ public class ClientesEnderecosDAO {
         }
     }
 
-    public static Clientes_Enderecos retreaveall(int fk_cliente) throws SQLException {
+    public static Clientes_Enderecos retreaveall() throws SQLException {
         Connection conn = DBConnection.getConnection();
 
-        ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM CLIENTES_ENDERECOS WHERE FK_CLIENTE=" + fk_cliente);
+        ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM CLIENTES_ENDERECOS ");
         Clientes_Enderecos e = null;
         if (rs.next()) {
             e = new Clientes_Enderecos(
